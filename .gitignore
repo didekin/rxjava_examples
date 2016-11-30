@@ -1,0 +1,19 @@
+# Idea files
+/**/*.iml
+/**/*.ipr
+/**/*.iws
+.idea/
+services/.idea/
+
+# Mac files
+.DS_Store
+
+# Gradle root files
+.gradle/
+
+# Build and logs
+logs/
+**/build/
+/**/libs/*.jar
+/**/*.bat
+

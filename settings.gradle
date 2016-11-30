@@ -1,0 +1,3 @@
+rootProject.name = 'rxjava_examples'
+include 'simple_examples'
+

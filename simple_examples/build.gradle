@@ -1,0 +1,9 @@
+configurations {
+}
+
+dependencies {
+    testCompile rootProject.ext.junit
+    compile rootProject.ext.rxjava
+
+}
+

@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+}
+
+ext {
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_8
+    targetCompatibilityVersion = JavaVersion.VERSION_1_8
+    rxjava = ['io.reactivex:rxjava:1.2.3']
+    junit = ["junit:junit:4.12"]
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2'
+}
+
+
+
+
