@@ -1,0 +1,6 @@
+$ mysql> source simple_examples/src/main/resources/dbinit_full.sql;
+
+$ mysqlimport --local --compress --user=pedro -p \
+    --host=localhost \
+    -c pr_id,m_cd,nombre --fields-terminated-by=':' rx_examples \
+    /Users/pedro/Documents/ext_git_projects/rxjava_examples/simple_examples/src/main/resources/municipio.csv

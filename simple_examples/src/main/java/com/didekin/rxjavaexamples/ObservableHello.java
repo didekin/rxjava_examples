@@ -31,6 +31,9 @@ public class ObservableHello {
         Observable.from(numbers).map(n -> "Number: " + n).subscribe(System.out::println);
     }
 
+    /**
+     *  It shows synchronous execution of methods doOnNext, filter, map.
+    */
     private static void simmpleExampleAsync(Integer... numbers)
     {
         Observable.from(numbers)
@@ -41,6 +44,16 @@ public class ObservableHello {
                 .subscribe(s -> System.out.println("SOME VALUE =>" + s));
 
         System.out.println("Will print BEFORE values are emitted");
+
+        /* Result:
+        RxIoScheduler-2
+        Will print BEFORE values are emitted
+        SOME VALUE =>Value 44 processed on RxIoScheduler-2
+        RxIoScheduler-2
+        RxIoScheduler-2
+        RxIoScheduler-2
+        SOME VALUE =>Value 66 processed on RxIoScheduler-2
+        */
     }
 
     public static void main(String[] args)

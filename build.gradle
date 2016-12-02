@@ -22,6 +22,8 @@ ext {
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
     rxjava = ['io.reactivex:rxjava:1.2.3']
     junit = ["junit:junit:4.12"]
+    rxjdbc = ['com.github.davidmoten:rxjava-jdbc:0.7.2',
+              'com.zaxxer:HikariCP-java6:2.3.2']
 }
 
 task wrapper(type: Wrapper) {
