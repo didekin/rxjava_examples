@@ -17,3 +17,6 @@ logs/
 /**/libs/*.jar
 /**/*.bat
 
+# Help
+**/help.txt
+
