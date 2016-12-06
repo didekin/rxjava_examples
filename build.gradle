@@ -24,6 +24,10 @@ ext {
     junit = ["junit:junit:4.12"]
     rxjdbc = ['com.github.davidmoten:rxjava-jdbc:0.7.2',
               'com.zaxxer:HikariCP-java6:2.3.2']
+    twitter_java = ['org.twitter4j:twitter4j-core:4.0.5',
+                    'org.twitter4j:twitter4j-stream:4.0.5',
+                    'org.twitter4j:twitter4j-async:4.0.5',
+                    'org.twitter4j:twitter4j:4.0.5']
 }
 
 task wrapper(type: Wrapper) {

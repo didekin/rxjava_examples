@@ -1,7 +1,6 @@
-package com.didekin.rxjavaexamples;
+package com.didekin.rxjava;
 
 import rx.Observable;
-import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
 /**

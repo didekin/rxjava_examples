@@ -10,9 +10,9 @@ import java.util.List;
  */
 public class FilterFruit {
 
-    public static <T> List<T> filterByPredicate(List<T> tAlls, Predicate<T> predicate)
+    private static <T> List<T> filterByPredicate(List<T> tAlls, Predicate<T> predicate)
     {
-        List<T> filterList = new ArrayList<T>();
+        List<T> filterList = new ArrayList<>();
         for (T t : tAlls) {
             if (predicate.test(t)) {
                 filterList.add(t);
@@ -24,10 +24,10 @@ public class FilterFruit {
     public static void main(String[] args){
         Apple appleOne = new Apple("green",125);
         Apple appleTwo = new Apple("blue",175);
-        List<Apple> apples = new ArrayList<Apple>(2);
+        List<Apple> apples = new ArrayList<>(2);
         apples.add(appleOne);
         apples.add(appleTwo);
-        List<Apple> filterList = filterByPredicate(apples,apple->"green".equals(apple.getColor()));
+        List<Apple> filterList = filterByPredicate(apples,apple -> "green".equals(apple.getColor()));
         System.out.printf("Filter apple: %s%n", filterList.get(0).getColor());
     }
 
@@ -35,21 +35,17 @@ public class FilterFruit {
         String color;
         int weight;
 
-        public Apple(String color, int weight)
+        Apple(String color, int weight)
         {
             this.color = color;
             this.weight = weight;
         }
 
-        public String getColor()
+        String getColor()
         {
             return color;
         }
 
-        public int getWeight()
-        {
-            return weight;
-        }
     }
 
     interface Predicate<T> {
