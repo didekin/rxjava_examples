@@ -7,7 +7,7 @@ package com.didekin.lambdas;
  */
 public class PrePosOperators {
 
-    static int[] array = new int[]{1,4,6,8,11};
+    private static int[] array = new int[]{1,4,6,8,11};
 
     public static void main(String[] args){
         int i = 0;
