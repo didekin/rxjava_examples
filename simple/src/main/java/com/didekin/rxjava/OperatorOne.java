@@ -1,7 +1,5 @@
 package com.didekin.rxjava;
 
-import com.didekin.Utils;
-
 import rx.Observable;
 
 import static com.didekin.Utils.log;
@@ -13,7 +11,8 @@ import static com.didekin.Utils.log;
  */
 public class OperatorOne {
 
-    private static void checkFilter_1(String... strings){
+    private static void checkFilter_1(String... strings)
+    {
 
         log("============== Inside checkFilter_1() ============== ");
 
@@ -24,15 +23,16 @@ public class OperatorOne {
         Observable<String> observable3 = Observable.from(strings)
                 .filter(s -> s.startsWith("&"));
 
-        Utils.log("Subscription1");
+        log("Subscription1");
         observable1.subscribe(System.out::println);
-        Utils.log("Subscription2");
+        log("Subscription2");
         observable2.subscribe(System.out::println);
-        Utils.log("Subscription3");
+        log("Subscription3");
         observable3.subscribe(System.out::println);
     }
 
-    private static void checkFilterMap(){
+    private static void checkFilterMap()
+    {
 
         log("============== Inside checkFilterMap() ============== ");
 
@@ -58,13 +58,14 @@ public class OperatorOne {
                 .subscribe(s -> System.out.println("D: " + s));
     }
 
-    private static void checkFlatMap(){
+    private static void checkFlatMap()
+    {
 
         log("============== Inside checkFlatMap() ============== ");
 
         log("First observable");
 
-        Observable.just(1,2,3,4)
+        Observable.just(1, 2, 3, 4)
                 .flatMap(number -> {
                     System.out.printf("(%d,%d)%n", number, ++number);
                     return Observable.empty();
@@ -73,7 +74,7 @@ public class OperatorOne {
 
         log("Second observable");
 
-        Observable.just(1,2,3,4)
+        Observable.just(1, 2, 3, 4)
                 .flatMap(number -> Observable.just(number, ++number))
                 .map(number -> {
                     System.out.printf("(%d,%d)%n", number, ++number);
@@ -83,10 +84,75 @@ public class OperatorOne {
 
     }
 
+    private static void checkFlatMap_2(Integer[] numbers)
+    {
+        new OperatorOne().calculateOne(numbers);
+        new OperatorOne().calculateTwo(numbers);
+    }
+
     public static void main(String[] args)
     {
-        checkFilter_1("?A", ">B","&C","%D","#E");
+        checkFilter_1("?A", ">B", "&C", "%D", "#E");
         checkFilterMap();
         checkFlatMap();
+        checkFlatMap_2(new Integer[]{2, 11, 1, 3, 5, 2});
     }
+
+//    ============================== HELPER METHODS AND CLASSES ==========================
+
+    private void calculateOne(Integer[] numbers)
+    {
+        log("============== Inside calculateOne() ============== ");
+
+        getNumber(numbers).subscribe(
+                number -> {
+                },
+                error -> log(error.getMessage()),
+                () -> getSuma(numbers)
+        );
+    }
+
+    private void calculateTwo(Integer[] numbers)
+    {
+        log("============== Inside calculateTwo() ============== ");
+
+        getNumber(numbers).flatMap(
+                number -> Observable.empty(),
+                Observable::error,
+                () -> getSuma(numbers)
+        ).subscribe(suma -> {
+            log("Nº sumandos = " + suma.numSumandos);
+            log("Suma = " + suma.result);
+        });
+    }
+
+    private Observable<Integer> getNumber(Integer[] numbers)
+    {
+        return Observable.from(numbers);
+    }
+
+    private Observable<Suma> getSuma(Integer[] numbers)
+    {
+        int sum = 0;
+        int sumandos = 0;
+        for (int number : numbers) {
+            sum += number;
+            ++sumandos;
+        }
+        return Observable.just(new Suma(sumandos, sum));
+    }
+
+
+    static class Suma {
+
+        final int numSumandos;
+        final int result;
+
+        Suma(int numSumandos, int result)
+        {
+            this.numSumandos = numSumandos;
+            this.result = result;
+        }
+    }
+
 }

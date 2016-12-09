@@ -6,5 +6,6 @@ dependencies {
     compile rootProject.ext.rxjava
     compile rootProject.ext.rxjdbc
     compile rootProject.ext.client_lib
+    compile 'org.slf4j:slf4j-simple:1.7.10'
 }
 
