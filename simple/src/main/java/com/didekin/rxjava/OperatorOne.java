@@ -104,23 +104,25 @@ public class OperatorOne {
     {
         log("============== Inside calculateOne() ============== ");
 
-        getNumber(numbers).subscribe(
-                number -> {
-                },
-                error -> log(error.getMessage()),
-                () -> getSuma(numbers)
-        );
+        getNumber(numbers)
+                .subscribe(
+                        number -> {
+                        },
+                        error -> log(error.getMessage()),
+                        () -> getSuma(numbers)
+                );
     }
 
     private void calculateTwo(Integer[] numbers)
     {
         log("============== Inside calculateTwo() ============== ");
 
-        getNumber(numbers).flatMap(
-                number -> Observable.empty(),
-                Observable::error,
-                () -> getSuma(numbers)
-        ).subscribe(suma -> {
+        getNumber(numbers)
+                .flatMap(
+                        number -> Observable.empty(),
+                        Observable::error,
+                        () -> getSuma(numbers)
+                ).subscribe(suma -> {
             log("Nº sumandos = " + suma.numSumandos);
             log("Suma = " + suma.result);
         });

@@ -1,7 +1,11 @@
 package com.didekin.methodref;
 
+import com.didekin.Utils;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
+
+import static com.didekin.Utils.log;
 
 /**
  * User: pedro@didekin
@@ -15,6 +19,6 @@ public class MethodReferenceOne {
     public static void main(String[] args) {
         String[] letters = new String[]{"a","b","x","y","d","c"};
         new MethodReferenceOne().b2.accept(letters);
-        System.out.println(Arrays.toString(letters));
+        log(Arrays.toString(letters));
     }
 }
