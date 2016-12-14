@@ -4,9 +4,7 @@ configurations {
 dependencies {
     testCompile rootProject.ext.junit
     compile rootProject.ext.rxjava
-    compile rootProject.ext.rxjdbc
     compile rootProject.ext.client_lib
-    compile 'org.slf4j:slf4j-simple:1.7.10'
-    compile 'org.apache.commons:commons-lang3:3.5'
+    compile 'org.springframework:spring-context:4.3.4.RELEASE'
 }
 

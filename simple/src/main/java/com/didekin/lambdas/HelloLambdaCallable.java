@@ -8,18 +8,21 @@ import java.util.function.Consumer;
  * Date: 12/08/16
  * Time: 18:34
  */
-public class HelloSilly
-{
+public class HelloLambdaCallable {
     public static void main(String[] args)
     {
-        Callable<Void> callable = () -> { System.out.println("Hello silly"); return null; };
+        Callable<Void> callable = () -> {
+            System.out.println("Hello silly");
+            return null;
+        };
+
         try {
             callable.call();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Consumer<String> b3 = HelloLambda::main;
+        Consumer<String> b3 = HelloSingleThreadLambda::main;
         b3.accept(null);
     }
 }

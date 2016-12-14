@@ -31,8 +31,6 @@ public final class MunicipioDao {
 
     public List<Municipio> getFiveMunicipiosByProvincia(short provId)
     {
-
-//        database.close();
         return database
                 .select("select * from municipio where pr_id= ? order by m_cd limit 5")
                 .parameter(provId)
@@ -58,7 +56,6 @@ public final class MunicipioDao {
                                 new Provincia(rs.getShort("pr_id"))
                         )
                 )
-//                .doOnCompleted(database::close)
                 .toList();
     }
 

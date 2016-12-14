@@ -49,7 +49,7 @@ public class MunicipioDaoTest {
     public void getTenMunicipiosByProvincia() throws Exception
     {
         List<Municipio> municipios10 = daoInstance.getFiveMunicipiosByProvincia((short) 1);
-        assertThat(municipios10.size(), is(10));
+        assertThat(municipios10.size(), is(5));
         assertThat(municipios10.get(0).getNombre(), is("Alegría-Dulantzi"));
     }
 

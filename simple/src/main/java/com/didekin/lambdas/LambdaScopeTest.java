@@ -9,25 +9,26 @@ import java.util.function.Consumer;
  */
 public class LambdaScopeTest {
 
-    public int x = 0;
+    private int x = 0;
 
     class FirstLevel {
 
-        public final int x = 1;
+        final int x = 1;
 
         void methodInFirstLevel(int x)
         {
-            Consumer<Integer> myConsumer = (y) ->
-            {
+            Consumer<Integer> myConsumer = y -> {
+                // parameter x.
                 System.out.println("x = " + x); // Statement A
+                // since y is the parameter of the lambda, then y == x.
                 System.out.println("y = " + y);
+                // this refers to the enclosing class instance of the lambda exp.: x == 1.
                 System.out.println("this.x = " + this.x);
+                // x == 0.
                 System.out.println("LambdaScopeTest.this.x = " +
                         LambdaScopeTest.this.x);
             };
-
             myConsumer.accept(x);
-
         }
     }
 

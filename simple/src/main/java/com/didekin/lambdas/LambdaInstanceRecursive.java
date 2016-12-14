@@ -7,11 +7,11 @@ import java.util.function.UnaryOperator;
  * Date: 13/08/16
  * Time: 18:28
  */
-public class LambdaRecursiveTwo {
+public class LambdaInstanceRecursive {
 
-    UnaryOperator<Integer> factorial;
+    private UnaryOperator<Integer> factorial;
 
-    public LambdaRecursiveTwo()
+    private LambdaInstanceRecursive()
     {
         factorial = i -> (i == 0 ? 1 : i * factorial.apply( i - 1 ));
     }
@@ -19,6 +19,6 @@ public class LambdaRecursiveTwo {
     public static void main(String[] args)
     {
         int number = 6;
-        System.out.printf("Factorial %d = %d", number, new LambdaRecursiveTwo().factorial.apply(number));
+        System.out.printf("Factorial %d = %d", number, new LambdaInstanceRecursive().factorial.apply(number));
     }
 }

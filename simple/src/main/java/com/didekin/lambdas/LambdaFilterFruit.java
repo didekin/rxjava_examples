@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 25/07/15
  * Time: 10:52
  */
-public class FilterFruit {
+public class LambdaFilterFruit {
 
     private static <T> List<T> filterByPredicate(List<T> tAlls, Predicate<T> predicate)
     {

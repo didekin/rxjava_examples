@@ -7,9 +7,9 @@ import java.util.function.UnaryOperator;
  * Date: 13/08/16
  * Time: 18:28
  */
-public class LambdaRecursiveOne {
+public class LambdaStaticRecursive {
 
-    static UnaryOperator<Integer> factorial;
+    private static UnaryOperator<Integer> factorial;
 
     static {
         factorial = i -> (i == 0 ? 1 : i * factorial.apply( i - 1 ));

@@ -1,4 +1,4 @@
-package com.didekin.rxjavaexamples;
+package com.didekin.rxjava;
 
 import org.junit.Test;
 
