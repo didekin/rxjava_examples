@@ -12,7 +12,7 @@ import static rx.Observable.just;
  * Date: 10/12/16
  * Time: 15:20
  */
-public class OperatorCompose {
+public class ZipOperator_A {
 
     private static final Observable<Character> letters = Observable
             .range(0, 'Z' - 'A' + 1)
@@ -44,7 +44,7 @@ public class OperatorCompose {
         log("TRUE-FALSE");
         trueFalse.take(10).subscribe(System.out::println);
         log("CHARS_BOOLEAN");
-        OperatorCompose thisOperator = new OperatorCompose();
+        ZipOperator_A thisOperator = new ZipOperator_A();
         thisOperator.getCharTrue(letters).subscribe(System.out::println);
         log("CHARS_BOOLEAN_FILTERED 1");
         thisOperator.getCharTrue(letters).filter(letter -> letter.equals('A') || letter.equals('C')).subscribe(System.out::println);

@@ -47,7 +47,7 @@ public class ConnectableOne {
                             () -> log("Disconnecting... ")
                     )
             );
-        }).share();
+        }).share();   // We don't need to explicitly call 'connect' on the observable.
 
         log("-------- Before subscribers ---------");
 

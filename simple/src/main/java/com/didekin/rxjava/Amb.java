@@ -12,7 +12,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
  * Date: 09/12/16
  * Time: 20:02
  */
-public class OperatorTwo {
+public class Amb {
 
     private Observable<String> stream(int initialDelay, int interval, String name)
     {
@@ -31,7 +31,7 @@ public class OperatorTwo {
 
         Observable.amb(
                 stream(10, 17, "S"),
-                stream(20, 10, "F")
+                stream(12, 10, "F")
         ).subscribe(Utils::log);
 
         Thread.sleep(100);
@@ -39,6 +39,6 @@ public class OperatorTwo {
 
     public static void main(String[] args) throws InterruptedException
     {
-        new OperatorTwo().checkAmb_1();
+        new Amb().checkAmb_1();
     }
 }

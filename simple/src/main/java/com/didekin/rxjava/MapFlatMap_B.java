@@ -11,14 +11,14 @@ import static com.didekin.Utils.log;
  * Date: 09/12/16
  * Time: 17:00
  */
-public class CartersianProduct {
+public class MapFlatMap_B {
 
     private final Observable<Integer> oneToEight;
     private final Observable<String> ranks;
     private final Observable<String> files;
-    private static final CartersianProduct INSTANCE = new CartersianProduct();
+    private static final MapFlatMap_B INSTANCE = new MapFlatMap_B();
 
-    private CartersianProduct()
+    private MapFlatMap_B()
     {
         oneToEight = Observable.range(1, 8);
 

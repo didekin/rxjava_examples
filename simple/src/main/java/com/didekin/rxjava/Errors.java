@@ -40,6 +40,7 @@ public class Errors {
         log("============== checkOnErrorReturn first trial ============== ");
 
         just(1, 0)
+                // It doesn't capture the error event which is propagated downstream.
                 .onErrorReturn(error -> 99999)
                 .map(x -> 10 / x)
                 .subscribe(number -> log("OK, division = " + String.valueOf(number)),
@@ -51,6 +52,7 @@ public class Errors {
         // Complete without error.
         just(1, 0)
                 .map(x -> 10 / x)
+                // It captures the error event which is not propagated downstream.
                 .onErrorReturn(error -> 99999)
                 .subscribe(number -> log("OK, division = " + String.valueOf(number)),
                         error -> log("ERROR"),
@@ -74,6 +76,8 @@ public class Errors {
                         () -> log("COMPLETED"));
 
         log("============== checkOnErrorResume second trial ============== ");
+
+        // Error is propagated downstream because it is a different kind of exception.
         just(1, 0)
                 .map(x -> 10 / x)
                 .onErrorResumeNext(error -> {

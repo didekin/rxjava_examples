@@ -12,7 +12,7 @@ import static java.util.concurrent.TimeUnit.MICROSECONDS;
  * Date: 03/12/16
  * Time: 12:15
  */
-public class ObservableTimer {
+public class TimerAndInterval {
 
     private static void checkTimer() throws InterruptedException
     {

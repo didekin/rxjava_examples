@@ -9,7 +9,7 @@ import static com.didekin.Utils.log;
  * Date: 06/12/16
  * Time: 14:53
  */
-public class OperatorOne {
+public class MapFlatMap_A {
 
     private static void checkFilter_1(String... strings)
     {
@@ -86,8 +86,8 @@ public class OperatorOne {
 
     private static void checkFlatMap_2(Integer[] numbers)
     {
-        new OperatorOne().calculateOne(numbers);
-        new OperatorOne().calculateTwo(numbers);
+        new MapFlatMap_A().calculateOne(numbers);
+        new MapFlatMap_A().calculateTwo(numbers);
     }
 
     public static void main(String[] args)

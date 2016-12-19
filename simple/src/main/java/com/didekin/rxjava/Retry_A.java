@@ -2,6 +2,8 @@ package com.didekin.rxjava;
 
 import com.didekin.Utils;
 
+import java.util.concurrent.TimeoutException;
+
 import rx.Observable;
 
 import static com.didekin.Utils.log;
@@ -31,7 +33,7 @@ public class Retry_A {
         );
     }
 
-    private static Observable<String> risky_2()
+    static Observable<String> risky_2()
     {
         return Observable.fromCallable(
                 () -> {
@@ -42,7 +44,7 @@ public class Retry_A {
                         return "OK";
                     } else {
                         Thread.sleep(randomLong);
-                        throw new RuntimeException("Transient");
+                        throw new RuntimeException("crash!");
                     }
                 }
         );
@@ -98,9 +100,37 @@ public class Retry_A {
         */
     }
 
+    private static void checkRetryThree()
+    {
+        log("============== checkRetryThree ============== ");
+
+        risky_2()
+                .timeout(1000, MILLISECONDS)
+                .doOnError(th -> log(th.toString()))
+                .retry((attempt, error) -> error instanceof TimeoutException && attempt < 10)
+                .doOnError(th -> log("After runtime exception won't retry "))
+                .subscribe(Utils::log,
+                        error -> Utils.log("Subscriber message: " + error.getMessage()));
+
+        /*
+        POSSIBLE OUTCOME:
+        main: 1905
+        RxComputationScheduler-1: java.util.concurrent.TimeoutException
+        main: 1025
+        RxComputationScheduler-2: java.util.concurrent.TimeoutException
+        main: 1963
+        RxComputationScheduler-3: java.util.concurrent.TimeoutException
+        main: 683
+        main: java.lang.RuntimeException: crash!
+        main: After runtime exception won't retry
+        main: Subscriber message: crash!
+        */
+    }
+
     public static void main(String[] args)
     {
         checkRetryOne();
         checkRetryTwo();
+        checkRetryThree();
     }
 }

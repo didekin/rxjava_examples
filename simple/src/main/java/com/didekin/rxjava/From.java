@@ -8,7 +8,7 @@ import rx.schedulers.Schedulers;
  * Date: 30/11/16
  * Time: 17:37
  */
-public class ObservableHello {
+public class From {
 
     private static void helloWorld()
     {

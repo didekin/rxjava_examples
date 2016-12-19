@@ -60,10 +60,11 @@ public class ObservableCreator {
                             i = i.add(ONE);
                         }
                     };
-                    Thread threadB =  new Thread(r);
+                    Thread threadB = new Thread(r);
                     threadB.start();
                     log(threadB.getName() + " Inside lambda AA subscriber");
-                });
+                }
+        );
         naturalNumbers.subscribe(str -> log(String.valueOf(str)));
     }
 
@@ -81,7 +82,7 @@ public class ObservableCreator {
                         }
                         subscriber.onCompleted();
                     };
-                    Thread threadB =  new Thread(r);
+                    Thread threadB = new Thread(r);
                     threadB.start();
                     log(threadB.getName() + " Inside lambda BB subscriber");
                 });
@@ -96,24 +97,24 @@ public class ObservableCreator {
         log("============== Inside createSequence_CCC ============== ");
 
         Observable<T> naturalN = Observable.create(subscriber -> {
-             Runnable r = () -> {
-                 try {
-                     TimeUnit.SECONDS.sleep(1);
-                 } catch (InterruptedException e) {
-                     log(e.getMessage());
-                     log("Unsubscribed: " + String.valueOf(subscriber.isUnsubscribed()));
-                 }
-                 if (!subscriber.isUnsubscribed()) {
-                     subscriber.onNext(i);
-                     subscriber.onCompleted();
-                 }
-             };
-             Thread threadB =  new Thread(r);
-             threadB.start();
-             log(threadB.getName() + " Inside lambda CCC subscriber");
-             // 'Create method in Subscriptions' creates and returns a Subscription that invokes the given Action when unsubscribed.
-             subscriber.add(Subscriptions.create(threadB::interrupt));
-         });
+            Runnable r = () -> {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    log(e.getMessage());
+                    log("Unsubscribed: " + String.valueOf(subscriber.isUnsubscribed()));
+                }
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onNext(i);
+                    subscriber.onCompleted();
+                }
+            };
+            Thread threadB = new Thread(r);
+            threadB.start();
+            log(threadB.getName() + " Inside lambda CCC subscriber");
+            // 'Create method in Subscriptions' creates and returns a Subscription that invokes the given Action when unsubscribed.
+            subscriber.add(Subscriptions.create(threadB::interrupt));
+        });
 
         Subscription subscription = naturalN.subscribe(str -> log(String.valueOf(str)));
         Thread.sleep(900);
