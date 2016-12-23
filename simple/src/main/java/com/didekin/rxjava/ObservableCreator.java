@@ -21,9 +21,9 @@ import static java.math.BigInteger.ZERO;
 @SuppressWarnings("SameParameterValue")
 public class ObservableCreator {
 
-    private static void createWithJust(String s)
+    private static void create(String s)
     {
-        log("============== Inside createWithJust() ===============");
+        log("============== Inside create() ===============");
 
         Observable.create(subscriber -> {
             subscriber.onNext(s);
@@ -123,7 +123,7 @@ public class ObservableCreator {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException
     {
-        createWithJust("Just Hello");
+        create("Just Hello");
         ObservableCreator.range(1, 4).subscribe(
                 str -> System.out.printf("onNExt: %d%n", str),
                 str -> System.out.printf("ON ERROR %n"),
